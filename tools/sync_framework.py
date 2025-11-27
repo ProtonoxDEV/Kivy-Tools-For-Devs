@@ -77,7 +77,13 @@ class Component:
         clear_directory(self.dest)
         with tempfile.TemporaryDirectory() as tmp_dir_name:
             tmp_dir = Path(tmp_dir_name)
-            run(["git", "clone", "--depth", "1", "--branch", self.ref, self.repo, str(tmp_dir)])
+            try:
+                run(["git", "clone", "--depth", "1", "--branch", self.ref, self.repo, str(tmp_dir)])
+            except subprocess.CalledProcessError as exc:
+                raise RuntimeError(
+                    "Failed to clone upstream repository. Ensure network access is available "
+                    "and credentials are configured if needed."
+                ) from exc
             ref_value = run(["git", "rev-parse", "HEAD"], cwd=tmp_dir)
             for unwanted in self.remove_paths or []:
                 candidate = tmp_dir / unwanted

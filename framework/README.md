@@ -12,7 +12,9 @@ python tools/sync_framework.py
 
 or invoke `tools/update_framework.sh` which calls the same sync helper. The script clones each
 upstream repository, strips embedded git metadata, trims bulky samples (Kivy examples/tests), and
-records the commit SHA in each component's `VERSION.txt`.
+records the commit SHA in each component's `VERSION.txt`. If the workspace does not have network
+access the helper will fail early with a clear message so you can retry once connectivity is
+available.
 
 Included components:
 - `python-for-android`: planned patches for Android 15/API 35, NDK r25c, and Python 3.11 toolchain.
