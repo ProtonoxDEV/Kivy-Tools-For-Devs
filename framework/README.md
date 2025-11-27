@@ -1,14 +1,17 @@
 # Protonox Framework Components
 
-This folder hosts Protonox-maintained forks and toolchain components. Each subfolder should mirror the upstream project structure with Protonox patches applied.
+This folder hosts Protonox-maintained forks and toolchain components. Upstream sources must be
+synced when network access is available; the current workspace provides scaffolding, Protonox
+probes, and integration hooks so patches can be applied quickly once the real code is fetched.
 
-- `python-for-android`: Patched for Android 15+, bundled recipes (Cython, PIL, Pyjnius).
-- `kivy-2.3.1-protonox`: Kivy 2.3.1 with emoji/textinput/navigator/clock stability patches.
-- `pyjnius-protonox`: Pyjnius with Android 15 compatibility and Firebase SDK interoperability.
-- `cython-protonox`: Optimized Cython distribution targeting ARM64.
-- `windowser`: Native layer for storage, permissions, notifications, and background services.
-- `kibit3` & `bkibit-2.3.1`: Text and emoji rendering engines for cross-platform use.
-- `buildozer`: Internal Buildozer snapshot preconfigured for Protonox workflows.
-- `protonox-devtools`: Hot reload, wireless debugging, remote console, profiler, and project patcher.
+Included components:
+- `python-for-android`: planned patches for Android 15/API 35, NDK r25c, and Python 3.11 toolchain.
+- `kivy-2.3.1-protonox`: upstream Kivy with Protonox emoji, text input, clock, and canvas updates.
+- `pyjnius-protonox`: AndroidX-aware bridge with extended permissions and service bindings.
+- `cython-protonox`: Cython distribution tuned for ARM64 builds inside python-for-android.
+- `windowser`: native glue layer for permissions, storage, notifications, and background services.
+- `kibit3` & `bkibit-2.3.1`: text/emoji pipeline and canvas acceleration hooks for Protonox Kivy.
+- `buildozer`: Protonox defaults for SDK 34, NDK r25c, Java 17, and p4a integration.
+- `protonox-devtools`: hot reload, remote console, template generator, and diagnostics.
 
-Populate each component by syncing from the upstream sources and applying Protonox patches before shipping releases.
+Refer to `VERSIONS.md` for sync status and to `PATCHES.md` for Protonox-specific patch notes.
