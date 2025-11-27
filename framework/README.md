@@ -4,6 +4,16 @@ This folder hosts Protonox-maintained forks and toolchain components. Upstream s
 synced when network access is available; the current workspace provides scaffolding, Protonox
 probes, and integration hooks so patches can be applied quickly once the real code is fetched.
 
+To populate the real sources run:
+
+```
+python tools/sync_framework.py
+```
+
+or invoke `tools/update_framework.sh` which calls the same sync helper. The script clones each
+upstream repository, strips embedded git metadata, trims bulky samples (Kivy examples/tests), and
+records the commit SHA in each component's `VERSION.txt`.
+
 Included components:
 - `python-for-android`: planned patches for Android 15/API 35, NDK r25c, and Python 3.11 toolchain.
 - `kivy-2.3.1-protonox`: upstream Kivy with Protonox emoji, text input, clock, and canvas updates.
